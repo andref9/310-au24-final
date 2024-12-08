@@ -5,13 +5,23 @@
     <link rel="stylesheet" href="battle.css" />
   </head>
   <body>
+    <nav>
+      <button id="theme-btn">Toggle Theme</button>
+    </nav>
     <section>
-      <div></div>
+      <div class="health-container">
+        <div id="npc-health-bar"></div>
+      </div>
+      <img src="charmander.png" alt="charmander" width="200px"/>
     </section>
     <section>
-      <div></div>
+      <div class="health-container">
+        <div id="player-health-bar"></div>
+      </div>
       <p id="message-box"></p>
       <div id="move-container"></div>
     </section>
+    <script src="game.js"></script>
+    <script src="battle.js"></script>
   </body>
 </html>
