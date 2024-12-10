@@ -3,6 +3,7 @@ body {
   background: #fff;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -35,7 +36,12 @@ nav {
 
 #message-box {
   width: 200%;
-  height: 100px;
+  height: 5rem;
   border-style: solid;
   border-width: medium;
+}
+
+#move-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

@@ -21,6 +21,10 @@ class Character {
   setHealth(health) {
     this.currHealth = health;
   }
+
+  getType() {
+    return 'character';
+  }
 }
 
 class Npc extends Character {
@@ -31,6 +35,10 @@ class Npc extends Character {
   getMoveChoice() {
     const index = Math.floor(Math.random() * this.moves.length);
     return this.moves[index];
+  }
+
+  getType() {
+    return 'npc';
   }
 }
 
@@ -43,6 +51,7 @@ class Move {
   }
 }
 
+// Map types to their weaknesses
 const weak = {
   electric: ['ground'],
   fire: ['ground', 'rock', 'water'],
@@ -65,6 +74,10 @@ function gameover(player1, player2) {
   return false;
 }
 
+/**
+ * Determine the critical hit modifier
+ * @returns The critical hit modifier
+ */
 function getCrit() {
   let roll = Math.floor(Math.random() * 100);
   if (roll < 10) {
@@ -74,6 +87,12 @@ function getCrit() {
   }
 }
 
+/**
+ * Take a move and use its accuracy score to determine if the move hits or
+ * misses
+ * @param {Move} move The move
+ * @returns Whether or not the move hits (true/false)
+ */
 function hits(move) {
   let roll = Math.floor(Math.random() * 100);
   if (roll < move.acc) {
