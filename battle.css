@@ -7,19 +7,61 @@ body {
   align-items: center;
 }
 
+section {
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label,
+select,
+textarea
+input {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 body.dark-theme {
   color: #eee;
   background: #121212;
 }
 
+span.error {
+  margin: 10px;
+}
+
 nav {
   flex-direction: row;
   align-self: end;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
 }
 
 .health-container {
   width: 200px;
+}
+
+.move-button {
+  border: none;
+  color: white;
+  font-size: 24px;
+  background-color: #008CBA;
+  margin: 5px;
+  padding: 10px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.invalid {
+  outline: 2px solid red;
 }
 
 #npc-health-bar {
@@ -35,7 +77,11 @@ nav {
 }
 
 #message-box {
-  width: 200%;
+  font: 1.2rem sans-serif;
+  flex-direction: row;
+  justify-content: center;
+  width: auto;
+  padding: 10px;
   height: 5rem;
   border-style: solid;
   border-width: medium;
@@ -44,4 +90,9 @@ nav {
 #move-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+#feedback {
+  margin-top: 20%;
+  margin-bottom: 10%;
 }

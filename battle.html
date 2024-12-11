@@ -9,6 +9,7 @@
       <button id="theme-btn">Toggle Theme</button>
     </nav>
     <section>
+      <h1>Let's Battle!</h1>
       <div class="health-container">
         <div id="npc-health-bar"></div>
       </div>
@@ -20,6 +21,25 @@
       </div>
       <p id="message-box"></p>
       <div id="move-container"></div>
+    </section>
+    <section id="feedback">
+      <h2>Feedback?</h2>
+      <span>I take all feedback very seriously.</span>
+      <form id="the-form" action="">
+        <label for="type">Comment on?</label>
+        <select name="type" id="comment-type" required>
+          <option value="choose" selected="selected" disabled>
+            Choose one
+          </option>
+          <option value="feature">Features</option>
+          <option value="design">Design</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="comment">Comment</label>
+        <textarea id="comment" type="text" name="comment"></textarea>
+        <span class="error" id="comment-error"></span>
+        <input type="submit">
+      </form>
     </section>
     <script src="game.js"></script>
     <script src="battle.js"></script>

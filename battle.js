@@ -4,6 +4,10 @@ const moveContainer = document.getElementById('move-container');
 const themeButton = document.getElementById('theme-btn');
 const npcBar = document.getElementById('npc-health-bar');
 const playerBar = document.getElementById('player-health-bar');
+const comment = document.getElementById('comment');
+const select = document.getElementById('comment-type');
+const errorComment = document.getElementById('comment-error');
+const form = document.getElementById('the-form');
 
 window.addEventListener('load', () => {
   if (localStorage['theme'] === undefined) {
@@ -19,6 +23,9 @@ themeButton.addEventListener('click', () => {
   toggleStorageTheme();
 });
 
+/**
+ * Toggle the dark theme save state
+ */
 function toggleStorageTheme() {
   if (localStorage['theme'] === 'light') {
     localStorage['theme'] = 'dark';
@@ -27,8 +34,66 @@ function toggleStorageTheme() {
   }
 }
 
+/**
+ * I'm pretty sure this is redundant but like I always say it's better to be
+ * safe than... whatever the opposite of safe is... yeah... I do say that
+ */
 function clearMessageBox() {
   messageEl.innerText = '';
+}
+
+function displayErr() {
+  errorComment.classList.add('invalid');
+  errorComment.innerText = `Invalid or missing input`;
+}
+
+function validLength(input, min) {
+  if (input.value.trim().length >= min) {
+    input.classList.remove('invalid');
+    // errorComment.classList.remove('invalid');
+    // errorComment.innerText = ``;
+    return true;
+  } else {
+    input.classList.add('invalid');
+    displayErr();
+    return false;
+  }
+}
+
+function validSelect(selector) {
+  if (selector.value === 'choose') {
+    selector.classList.add('invalid');
+    displayErr();
+    return false;
+  } else {
+    selector.classList.remove('invalid');
+    // errorComment.classList.remove('invalid');
+    // errorComment.innerText = ``;
+    return true;
+  }
+}
+
+/**
+ * Form event listener
+ */
+form.addEventListener('submit', (e) => {
+  let selected = validSelect(select);
+  let longEnough = validLength(comment, 3);
+  if (!(selected)) {
+    e.preventDefault();
+  } else if (!longEnough) {
+    e.preventDefault();
+  } else {
+    alert(`That went straight into the void LOL`);
+  }
+})
+
+/**
+ * Display message for game start
+ */
+function startMessage() {
+  const msg = `${npc.name} is here to ruin your day!\n\nYou sent out ${player.name}`;
+  messageEl.innerText = msg;
 }
 
 /**
@@ -150,3 +215,4 @@ function handleChoice(e) {
 // Main:
 displayNames();
 makeMoves();
+startMessage();
